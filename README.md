@@ -20,6 +20,7 @@
 
 - build md to html
 - cd dist
+- git checkout branch to master
 - git add & commit
 - git push to master
 
