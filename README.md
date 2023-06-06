@@ -19,14 +19,36 @@
 # Deploy Automaticly
 
 - build md to html
-- cd dist
-- git checkout branch to master
-- git add & commit
-- git push to master
 
-```sh
-sh deploy.sh
-```
+  - ```sh
+    npm install
+    npm run docs:build
+    ```
+
+- branch main
+
+  - ```sh
+    git add .
+    git commit -m 'add'
+    git push
+    ```
+
+- cd to ./docs/.vitepress/dist and save the content to branch master
+
+- git checkout branch to master
+
+  - ```sh
+    git checkout -b master origin/master
+    ```
+
+  - git add & commit
+
+    ```
+    git add .
+    git commit -m 'add'
+    git push
+    ```
+
 
 # Reference
 
