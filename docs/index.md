@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "Mars Villager"
+  name: "Mars Village"
   text: "World of Double Flower"
   tagline: the quieter you become, the more you are able to hear
   actions:
