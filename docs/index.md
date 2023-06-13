@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: HCY
-      link: https://46op260548.imdo.co
+      link: http://46op260548.imdo.co
     - theme: alt
       text: MindMap
       link: https://marsvillager.github.io/mindmap/FuzzTesting.html
