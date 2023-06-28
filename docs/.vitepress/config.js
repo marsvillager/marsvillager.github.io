@@ -16,7 +16,8 @@ export default defineConfig({
         text: 'Blogs',
         items: [
           { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'Runtime API Examples', link: '/api-examples' },
+          { text: 'TLS', link: '/TLS' }
         ]
       }
     ],
