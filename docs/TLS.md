@@ -1,10 +1,12 @@
-# Core
+## Core
 
 - RSA 的主要困难是模数N的分解
 - DH 是基于离散对数的算法，DH 的主要困难是求解离散对数
 - ECC 是基于椭圆曲线的算法，ECC 的难度也是求解离散对数
 
-# TLS1.2（ECDHE）
+## TLS1.2（ECDHE）
+
+![TLS1.2](https://github.com/marsvillager/pictures_for_markdown/raw/main/TLS1.2.svg)
 
 ```mermaid
 sequenceDiagram
@@ -42,9 +44,11 @@ sequenceDiagram
 
 ![image-20230627104540841](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627104540841.png)
 
-## 1.1.Client->>Server: Client Hello
+**Download packages**：https://drive.google.com/file/d/16QnUSd3BLEM1LpkA5pUdBjugdsObFE24/view?usp=drive_link
 
-![image-20230627103433273](/Users/xuyi/Downloads/picture/image-20230627103433273.png)
+### 1.1.Client->>Server: Client Hello
+
+![image-20230627103433273](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627103433273.png)
 
 - `Random`：客户端产生的随机数 random_c，用于生成最终密钥
 - `Session ID`：会话标识符，如果是一个新的连接，这个值为0
@@ -55,9 +59,9 @@ sequenceDiagram
 
 > ⚠️注意：扩展是 TLS1.3 才开始使用的，在之前的版本是没有的，所以扩展是 1.3 的显著特征
 
-## 1.2.1.Server->>Client: Server Hello
+### 1.2.1.Server->>Client: Server Hello
 
-![image-20230627103907889](/Users/xuyi/Downloads/picture/image-20230627103907889.png)
+![image-20230627103907889](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627103907889.png)
 
 - `Random`：服务器生成的随机数 random_s
 - `Cipher Suites`：服务器选择的加密套件
@@ -68,9 +72,9 @@ sequenceDiagram
 
 - `Compression Methods`：服务器选择的压缩算法为 NULL 压缩算法，即不支持任何压缩算法，压缩基本由应用层来完成
 
-## 1.2.2.Server->>Client: Certificate
+### 1.2.2.Server->>Client: Certificate
 
-![image-20230627105106723](/Users/xuyi/Downloads/picture/image-20230627105106723.png)
+![image-20230627105106723](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627105106723.png)
 
 - `Certificate`：服务器返回了三个证书， 第一个是 CA 签发的证书（opencve），其它是 CA 链的证书
 
@@ -78,22 +82,22 @@ sequenceDiagram
 
 ​		服务器证书中存放一个公钥，用于加密后面生成的 Premaster secret。
 
-## 1.2.3.Server->>Client: Server Key Exchange
+### 1.2.3.Server->>Client: Server Key Exchange
 
-![image-20230627105407343](/Users/xuyi/Downloads/picture/image-20230627105407343.png)
+![image-20230627105407343](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627105407343.png)
 
 - `EC Diffie-Hellman`：服务器和浏览器是通过 Diffie-Hellman 算法来生成最终的密钥
 - `Pubkey`：服务器向客户端发送了 Pubkey，即椭圆曲线的公钥
 
-## 1.2.4.Server->>Client: Server Hello Done
+### 1.2.4.Server->>Client: Server Hello Done
 
-![image-20230627105511459](/Users/xuyi/Downloads/picture/image-20230627105511459.png)
+![image-20230627105511459](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627105511459.png)
 
 ​		告知客户端服务器这边握手相关的消息发送完毕。
 
-## 2.1.1.Client->>Server: Client Key Exchange
+### 2.1.1.Client->>Server: Client Key Exchange
 
-![image-20230627110326570](/Users/xuyi/Downloads/picture/image-20230627110326570.png)
+![image-20230627110326570](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627110326570.png)
 
 - `Pubkey`：浏览器收到服务器发来的 Certificate 包来之后，运行 Diffie-Hellman 算法生成一个 pubkey，然后发送给服务器
 
@@ -101,42 +105,44 @@ sequenceDiagram
 
 ​		最终的会话密钥 = random_c + random_s + Sharekey，之所以这么麻烦，是因为 TLS 设计者不信任客户端或服务器「伪随机数」的可靠性，为了保证真正的完全随机，把三个不可靠的随机数混合起来，那么「随机」的程度就非常高了，足够让黑客计算出最终的会话密钥，安全性更高。
 
-## 2.1.2.Client->>Server: Change Cipher Spec
+### 2.1.2.Client->>Server: Change Cipher Spec
 
-![image-20230627111002196](/Users/xuyi/Downloads/picture/image-20230627111002196.png)
+![image-20230627111002196](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627111002196.png)
 
 ​		变更密码规范协议，它非常简单，就是一条通知消息，告知对方以后的通信都是加密的。
 
-## 2.1.3.Client->>Server: Encrypted Handshake Message
+### 2.1.3.Client->>Server: Encrypted Handshake Message
 
-![image-20230627111114793](/Users/xuyi/Downloads/picture/image-20230627111114793.png)
+![image-20230627111114793](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627111114793.png)
 
 ​		客户端使用生成的对话密钥，加密之前所有收发握手消息的 Hash 和 MAC 值，发送给服务器，服务器将相同的会话密钥（使用相同方法生成）解密此消息，校验其中的 Hash 和 MAC 值。
 
 > ⚠️注意：Change Cipher Spec 和 Encrypted Handshake Message 不像 Client Hello、Server Hello 等是封装在 Handshake Protocol 层，而是同 Handshake Protocol 一样，直接封装在 TLS Record Layer 层。
 
-## 2.2.1.Server->>Client: Change Cipher Spec
+### 2.2.1.Server->>Client: Change Cipher Spec
 
-![image-20230627111727516](/Users/xuyi/Downloads/picture/image-20230627111727516.png)
+![image-20230627111727516](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627111727516.png)
 
 ​		服务器发送 Change Cipher Spec 消息，通知客户端此消息以后服务器会以加密方式发送数据。
 
-## 2.2.2.Server->>Client: Encrypted Handshake Message
+### 2.2.2.Server->>Client: Encrypted Handshake Message
 
-![image-20230627111740562](/Users/xuyi/Downloads/picture/image-20230627111740562.png)
+![image-20230627111740562](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627111740562.png)
 
 ​		服务器使用会话密钥加密之前所有收发握手消息的 Hash 和 MAC 值，发送给客户端去校验。
 
-## Application Data
+### Application Data
 
-![image-20230627111649567](/Users/xuyi/Downloads/picture/image-20230627111649567.png)
+![image-20230627111649567](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627111649567.png)
 
 ​		发送加密数据。
 
-# TLS1.3
+## TLS1.3
 
 - 废弃了 3DES、RC4、AES-CBC 等加密组件
 - 废弃了 SHA1、MD5 等哈希算法
+
+![TLS1.3](https://github.com/marsvillager/pictures_for_markdown/raw/main/TLS1.3.svg)
 
 ```mermaid
 sequenceDiagram
@@ -155,13 +161,15 @@ sequenceDiagram
     Client-->Server: Application Data（实际从 s->c 的 Change Cipher Spec 之后就全是加密数据了）
 ```
 
-![image-20230627155440895](/Users/xuyi/Downloads/picture/image-20230627155440895.png)
+![image-20230627155440895](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627155440895.png)
 
 ​		在 ChangeCipherSpec 消息之后，没有加密扩展、证书，甚至 Finished 消息都没有，这是因为 ChangeCipherSpec 之后的消息都是进行加密了的，Wireshark 没有对后续的消息进行解密，所以只是显示了 ApplicationData，即加密传输的数据。
 
-## 1.1.Client->>Server: Client Hello
+**Download packages**：https://drive.google.com/file/d/1ZqmhaqYJnbP3IupVkvZD9QvJ_L0C8Xio/view?usp=drive_link
 
-![image-20230627155544874](/Users/xuyi/Downloads/picture/image-20230627155544874.png)
+### 1.1.Client->>Server: Client Hello
+
+![image-20230627155544874](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627155544874.png)
 
 - `Random Bytes`：客户端产生的随机数 random_c，用于生成最终密钥
 - `Session ID`：会话标识符，如果是一个新的连接，这个值为0
@@ -170,21 +178,21 @@ sequenceDiagram
 - `Extension: ALPN`：客户端支持的应用层协议
 - `Extension: signature_algorithms`：客户端支持的签名算法
 
-![image-20230627172644983](/Users/xuyi/Downloads/picture/image-20230627172644983.png)
+![image-20230627172644983](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627172644983.png)
 
 - `Extension: key_share`：客户端支持的签名算法，此处包含两个 Key Share Entry，第一个是预留的空值，第二个是 x25519 曲线组，具体数据在 KeyExchange 字段中；每个 KeyShareEntry 都代表一组密钥交换参数
 
 > ⚠️注意：客户端和服务器之间使用 key_share 扩展来协商密钥交换所使用的曲线组，客户端会在 ClientHello 消息中发送支持的椭圆曲线组列表给服务器，虽然客户端提供了曲线组的选择范围，但实际上由服务器在这些范围内进行最终的曲线组选择
 
-![image-20230627173359227](/Users/xuyi/Downloads/picture/image-20230627173359227.png)
+![image-20230627173359227](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627173359227.png)
 
 - `Extension: psk_key_exchange_modes`：PSK 密钥交换模式选择，此处的 PSK 模式为 (EC)DHE 下的 PSK，客户端和服务器必须提供 KeyShare；如果是仅 PSK 模式，则服务器不需要提供 KeyShare。
 
 > ⚠️注意：扩展是 TLS1.3 才开始使用的，在之前的版本是没有的，所以扩展是 1.3 的显著特征
 
-## 1.2.Server->>Client: Server Hello
+### 1.2.Server->>Client: Server Hello
 
-![image-20230627155725442](/Users/xuyi/Downloads/picture/image-20230627155725442.png)
+![image-20230627155725442](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627155725442.png)
 
 - `Random`：服务器生成的随机数 random_s
 - `Cipher Suites`：服务器选择的加密套件
@@ -195,13 +203,13 @@ sequenceDiagram
 
 - `Compression Methods`：服务器选择的压缩算法为 NULL 压缩算法，即不支持任何压缩算法，压缩基本由应用层来完成
 
-## 1.3.Server->>Client: Change Cipher Spec
+### 1.3.Server->>Client: Change Cipher Spec
 
-![image-20230627155952007](/Users/xuyi/Downloads/picture/image-20230627155952007.png)
+![image-20230627155952007](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627155952007.png)
 
 ​		服务器发送 Change Cipher Spec 消息，通知客户端此消息以后服务器会以加密方式发送数据。
 
-## 1-RTT
+### 1-RTT
 
 ​		TLS1.2 中 Client 发送自己支持的椭圆曲线类型（Client Hello 报文中 extension 携带支持的椭圆曲线类型），然后等待 Server 选择后，才计算自己的公钥（根据客户端自身性能支持几个公钥）然后发送给 Server，所以才会有两个 RTT。
 
@@ -209,13 +217,13 @@ sequenceDiagram
 
 ​		尽管客户端验证证书的步骤被简化了，但 TLS 1.3 仍然提供了其他安全机制，包括使用安全的密钥交换算法和加密套件来保护通信的机密性和完整性。
 
-## 密钥协商机制 PSK 实现 0-RTT
+### 密钥协商机制 PSK 实现 0-RTT
 
 ​		PSK 是 Pre-Shared Key（预共享密钥）的缩写。它是一种在计算机网络通信中用于安全密钥协商的机制。在 PSK 机制中，通信双方**事先共享一个密钥**，并将其作为身份验证和加密通信的基础。在建立连接之前，双方都需使用该密钥进行身份验证，确保彼此信任并具备相应权限。这种方式可用于保护无线网络、VPN 等各种网络通信，提供更高的安全性与数据保护。
 
 ​		TLS1.3 引入了一种称为 "0-RTT" 的功能，可以通过使用先前建立的会话密钥来加速握手过程，此时 1.1 中在 Client Hello 时就把应用数据捎带发给 Server，即发送 Client Hello、Change Cipher Spec、Application Data 报文。
 
-# 协商问题
+## 协商问题
 
 ​		在 TLS 握手中，客户端按优先顺序显示其支持的密码套件列表，如果客户端和服务端支持的密码套件有重合，那么服务器会从这个列表中选择一个密码套件，否则会话建立就可能失败。
 
@@ -229,7 +237,7 @@ sequenceDiagram
 
 ​		目前较新的协议和框架，如 Noise，旨在消除协议协商。
 
-# Reference
+## Reference
 
 - https://blog.csdn.net/m0_50084718/article/details/113377136
 - https://www.cnblogs.com/xiaolincoding/p/14318338.html
