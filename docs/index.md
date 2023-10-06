@@ -12,7 +12,7 @@ hero:
       link: http://46op260548.imdo.co
     - theme: alt
       text: MindMap
-      link: https://marsvillager.github.io/mindmap/FuzzTesting.html
+      link: https://marsvillager.github.io/mindmap/out/IDS.html
 
 features:
   - title: Security

@@ -1,6 +1,6 @@
 # TLS
 
-​		区别于**应用层面**的**降级攻击**，**网络协议层面**的**协商机制**也可以实施降级攻击，因此以最典型的 TLS 为例，先侦查其原理，并根据抓包结果分析 TLS1.2 和 TLS1.3 的不同之处。
+​		区别于**应用层面**的**降级攻击**，**网络协议层面**的**协商机制**也可以实施降级攻击，因此以最典型的 TLS 为例，先侦查其原理，并根据抓包结果分析 TLSv1.2 和 TLSv1.3 的不同之处。
 
 ## Core
 
@@ -8,9 +8,9 @@
 - DH 是基于离散对数的算法，DH 的主要困难是求解离散对数
 - ECC 是基于椭圆曲线的算法，ECC 的难度也是求解离散对数
 
-## TLS1.2（ECDHE）
+## TLSv1.2（ECDHE）
 
-![TLS1.2](https://github.com/marsvillager/pictures_for_markdown/raw/main/TLS1.2.svg)
+![TLSv1.2](https://github.com/marsvillager/pictures_for_markdown/raw/main/TLSv1.2.svg)
 
 ```mermaid
 sequenceDiagram
@@ -27,7 +27,7 @@ sequenceDiagram
     Server->>Server: 根据基点 G 和 Prikey_s（次数）计算出服务端的<br>椭圆曲线公钥 Pubkey_s（Pubkey_s = Prikey_s·G），<br>做签名防篡改
     Server->>Client: 发送 Certificate、Server Key Exchange、Server Hello Done 报文
     
-    note left of Client: 1st RTT <br>（两个 Server->>Client 实际是一起的）
+    note left of Client: 1st RTT
     
     Client->>Client: 验证服务器证书
     Client-->>Client: 生成随机数作为客户端椭圆曲线的 Prikey_c，<br>保留到本地
@@ -39,7 +39,7 @@ sequenceDiagram
     
     Server->>Client: 发送 Change Cipher Spec、Encrypted Handshake Message 报文
     
-    note left of Client: 2rd RTT
+    note left of Client: 2nd RTT
     
     Server-->Client: 完成密钥交换，会话密钥 = random_c + random_s + Sharekey
     
@@ -61,7 +61,7 @@ sequenceDiagram
 - `Extension: ALPN`：客户端支持的应用层协议
 - `Extension: signature_algorithms`：客户端支持的签名算法
 
-> ⚠️注意：扩展是 TLS1.3 才开始使用的，在之前的版本是没有的，所以扩展是 1.3 的显著特征
+> ⚠️注意：扩展是 TLSv1.3 才开始使用的，在之前的版本是没有的，所以扩展是 1.3 的显著特征
 
 ### 1.2.1.Server->>Client: Server Hello
 
@@ -69,11 +69,10 @@ sequenceDiagram
 
 - `Random`：服务器生成的随机数 random_s
 - `Cipher Suites`：服务器选择的加密套件
-  - 密钥协商算法：`ECDHE`
-  - 签名算法：`RSA`
-  - 握手后的通信：`AES`，密钥长度 128 位，分组模式是 GCM
-  - 摘要算法：`SHA256`
-
+  - Key Exchange 密钥交换算法：`ECDHE`
+  - Authentication 签名算法：`RSA`
+  - Encryption 握手后的加密通信：`AES`，密钥长度 128 位，分组模式是 GCM
+  - Message Authentication Code 摘要算法：`SHA256`
 - `Compression Methods`：服务器选择的压缩算法为 NULL 压缩算法，即不支持任何压缩算法，压缩基本由应用层来完成
 
 ### 1.2.2.Server->>Client: Certificate
@@ -141,12 +140,12 @@ sequenceDiagram
 
 ​		发送加密数据。
 
-## TLS1.3
+## TLSv1.3
 
 - 废弃了 3DES、RC4、AES-CBC 等加密组件
 - 废弃了 SHA1、MD5 等哈希算法
 
-![TLS1.3](https://github.com/marsvillager/pictures_for_markdown/raw/main/TLS1.3.svg)
+![TLSv1.3](https://github.com/marsvillager/pictures_for_markdown/raw/main/TLSv1.3.svg)
 
 ```mermaid
 sequenceDiagram
@@ -162,7 +161,7 @@ sequenceDiagram
     
     note left of Client: half RTT
     
-    Client-->Server: Application Data（实际从 s->c 的 Change Cipher Spec 之后就全是加密数据了）
+    Client-->Server: Application Data（从 s->c 的 Change Cipher Spec 之后就全是加密数据了）
 ```
 
 ![image-20230627155440895](https://github.com/marsvillager/pictures_for_markdown/raw/main/image-20230627155440895.png)
@@ -192,7 +191,7 @@ sequenceDiagram
 
 - `Extension: psk_key_exchange_modes`：PSK 密钥交换模式选择，此处的 PSK 模式为 (EC)DHE 下的 PSK，客户端和服务器必须提供 KeyShare；如果是仅 PSK 模式，则服务器不需要提供 KeyShare。
 
-> ⚠️注意：扩展是 TLS1.3 才开始使用的，在之前的版本是没有的，所以扩展是 1.3 的显著特征
+> ⚠️注意：扩展是 TLSv1.3 才开始使用的，在之前的版本是没有的，所以扩展是 1.3 的显著特征
 
 ### 1.2.Server->>Client: Server Hello
 
@@ -200,10 +199,10 @@ sequenceDiagram
 
 - `Random`：服务器生成的随机数 random_s
 - `Cipher Suites`：服务器选择的加密套件
-  - 密钥协商算法：`null`，固定使用 PSK 机制
-  - 签名算法：`null`，后续直接加密了，不需要签名了
-  - 握手后的通信：`AES`，密钥长度 128 位，分组模式是 GCM
-  - 摘要算法：`SHA384`
+  - Key Exchange 密钥交换算法：`null`，固定使用 PSK 机制
+  - Authentication 签名算法：`null`，后续直接加密了，不需要签名了
+  - Encryption 握手后的通信：`AES`，密钥长度 128 位，分组模式是 GCM
+  - Message Authentication Code 摘要算法：`SHA384`
 
 - `Compression Methods`：服务器选择的压缩算法为 NULL 压缩算法，即不支持任何压缩算法，压缩基本由应用层来完成
 
@@ -215,9 +214,9 @@ sequenceDiagram
 
 ### 1-RTT
 
-​		TLS1.2 中 Client 发送自己支持的椭圆曲线类型（Client Hello 报文中 extension 携带支持的椭圆曲线类型），然后等待 Server 选择后，才计算自己的公钥（根据客户端自身性能支持几个公钥）然后发送给 Server，所以才会有两个 RTT。
+​		TLSv1.2 中 Client 发送自己支持的椭圆曲线类型（Client Hello 报文中 extension 携带支持的椭圆曲线类型），然后等待 Server 选择后，才计算自己的公钥（根据客户端自身性能支持几个公钥）然后发送给 Server，所以才会有两个 RTT。
 
-​		TLS1.3 中把计算出的自己的公钥直接放到 Client Hello 报文中（extension 的 keyshare），因此少了一个 RTT，但相应的，TLS 1.3 在握手过程中减少了客户端对服务器验证证书的步骤，在 TLS 1.3 中，客户端仍然会从服务器端收到证书，但客户端验证该证书并不是必需的。
+​		TLSv1.3 中把计算出的自己的公钥直接放到 Client Hello 报文中（extension 的 keyshare，即直接），因此少了一个 RTT，但相应的，TLS 1.3 在握手过程中减少了客户端对服务器验证证书的步骤，在 TLS 1.3 中，客户端仍然会从服务器端收到证书，但客户端验证该证书并不是必需的。
 
 ​		尽管客户端验证证书的步骤被简化了，但 TLS 1.3 仍然提供了其他安全机制，包括使用安全的密钥交换算法和加密套件来保护通信的机密性和完整性。
 
@@ -225,7 +224,7 @@ sequenceDiagram
 
 ​		PSK 是 Pre-Shared Key（预共享密钥）的缩写。它是一种在计算机网络通信中用于安全密钥协商的机制。在 PSK 机制中，通信双方**事先共享一个密钥**，并将其作为身份验证和加密通信的基础。在建立连接之前，双方都需使用该密钥进行身份验证，确保彼此信任并具备相应权限。这种方式可用于保护无线网络、VPN 等各种网络通信，提供更高的安全性与数据保护。
 
-​		TLS1.3 引入了一种称为 "0-RTT" 的功能，可以通过使用先前建立的会话密钥来加速握手过程，此时 1.1 中在 Client Hello 时就把应用数据捎带发给 Server，即发送 Client Hello、Change Cipher Spec、Application Data 报文。
+​		TLSv1.3 引入了一种称为 "0-RTT" 的功能，可以通过使用先前建立的会话密钥来加速握手过程，此时 1.1 中在 Client Hello 时就把应用数据捎带发给 Server，即发送 Client Hello、Change Cipher Spec、Application Data 报文。
 
 ## 协商问题
 
@@ -245,6 +244,6 @@ sequenceDiagram
 
 - https://blog.csdn.net/m0_50084718/article/details/113377136
 - https://www.cnblogs.com/xiaolincoding/p/14318338.html
-- [TLS1.3](https://blog.csdn.net/SkyChaserYu/article/details/105840504?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168785418416800182138639%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168785418416800182138639&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-105840504-null-null.142^v88^control_2,239^v2^insert_chatgpt&utm_term=tls抓包分析&spm=1018.2226.3001.4187)
-- [TLS1.3](https://blog.csdn.net/mrpre/article/details/81532469)
+- [TLSv1.3](https://blog.csdn.net/SkyChaserYu/article/details/105840504?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168785418416800182138639%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168785418416800182138639&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-105840504-null-null.142^v88^control_2,239^v2^insert_chatgpt&utm_term=tls抓包分析&spm=1018.2226.3001.4187)
+- [TLSv1.3](https://blog.csdn.net/mrpre/article/details/81532469)
 - [1.3 vs 1.2](https://zhuanlan.zhihu.com/p/44980381)
