@@ -9,10 +9,10 @@ hero:
   actions:
     - theme: brand
       text: OpenCVE
-      link: http://46op260548.imdo.co
+      link: https://github.com/marsvillager/opencve
     - theme: alt
       text: MindMap
-      link: https://marsvillager.github.io/mindmap/out/IDS.html
+      link: https://github.com/marsvillager/mindmap
 
 features:
   - title: Security
