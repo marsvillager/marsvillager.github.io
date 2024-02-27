@@ -8,15 +8,17 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Blogs', link: '/markdown-examples' }
+      { text: 'Blogs', link: '/CTF_yeeclass' }
     ],
 
     sidebar: [
       {
         text: 'Blogs',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' },
+          // { text: 'Markdown Examples', link: '/markdown-examples' },
+          // { text: 'Runtime API Examples', link: '/api-examples' },
+          { text: 'CTF_yeeclass', link: '/CTF_yeeclass' },
+          { text: 'Floating Point', link: '/Floating Point' },
           { text: 'TLS', link: '/TLS' }
         ]
       }
