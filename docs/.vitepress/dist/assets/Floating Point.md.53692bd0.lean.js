@@ -1,0 +1,1 @@
+import{_ as a,o as i,c as l,O as e}from"./chunks/framework.02642853.js";const F=JSON.parse('{"title":"Background","description":"","frontmatter":{},"headers":[],"relativePath":"Floating Point.md"}'),t={name:"Floating Point.md"},r=e("",37),o=[r];function n(s,h,c,p,u,d){return i(),l("div",null,o)}const f=a(t,[["render",n]]);export{F as __pageData,f as default};
