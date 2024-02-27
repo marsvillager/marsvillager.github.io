@@ -8,6 +8,9 @@ hero:
   tagline: the quieter you become, the more you are able to hear
   actions:
     - theme: brand
+      text: Paper
+      link: https://marsvillager.github.io/PaperWorkflowAutomation/summary/visualize.html
+    - theme: alt
       text: OpenCVE
       link: https://github.com/marsvillager/opencve
     - theme: alt
