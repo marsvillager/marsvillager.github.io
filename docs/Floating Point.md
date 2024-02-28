@@ -69,9 +69,9 @@ BF16 首先是在 Google 的 TPU 中得到支持，其后在业界得到了广�
 
 2022年，Nvidia 发布的最新一代高性能 GPU 架构：H100。H100 TensorCore 中引入了一种新的浮点类型 FP8。相较于 FP16/BF16，FP8 能取得到 2x 的性能提升，4096 MAC/cycle 的水平。
 
-![img](https://pic1.zhimg.com/80/v2-e0349edbb465cf3abf12cc65d5479ac4_1440w.jpg)
+![img1](https://pic1.zhimg.com/80/v2-e0349edbb465cf3abf12cc65d5479ac4_1440w.jpg)
 
-![img](https://img-blog.csdnimg.cn/0f15629ed5204216ab3279c1855c9532.png)
+![img2](https://img-blog.csdnimg.cn/0f15629ed5204216ab3279c1855c9532.png)
 
 有两种形式，E5M2 和 E4M3
 

@@ -17,7 +17,8 @@ export default defineConfig({
         items: [
           // { text: 'Markdown Examples', link: '/markdown-examples' },
           // { text: 'Runtime API Examples', link: '/api-examples' },
-          { text: 'CTF_yeeclass', link: '/CTF_yeeclass' },
+          { text: 'CTF_Web_rce', link: '/CTF_Web_rce' },
+          { text: 'CTF_Web_yeeclass', link: '/CTF_Web_yeeclass' },
           { text: 'Floating Point', link: '/Floating Point' },
           { text: 'TLS', link: '/TLS' }
         ]

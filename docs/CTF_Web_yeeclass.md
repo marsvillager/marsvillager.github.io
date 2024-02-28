@@ -4,6 +4,8 @@
 
 # 1、思路
 
+本地部署：`sudo docker-compose build`，`sudo docker-compose up`
+
 （1）`init.sql` 创建表：homework、user、submission
 
 （2）`docker-compose.yml` 创建容器
