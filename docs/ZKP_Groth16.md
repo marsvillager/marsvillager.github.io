@@ -2,11 +2,11 @@
 
 ![algebra](https://img-blog.csdnimg.cn/20210429150145188.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2N3Mzk3MjY1MzYy,size_16,color_FFFFFF,t_70)
 
-**（1）Group 群**
+## （1）Group 群
 
 代数结构 $(R, *)$​​，二元运算根据封闭性、单位元、逆元、结合律、交换律，可以归纳成不同的群
 
-**（2）循环群**
+## （2）循环群
 
 设 $G$ 是一个阶为 $p$（素数）的循环群，循环群中所有的元素都由一个元素生成，称这个元素 $g$（正整数）为 $G$ 的生成元
 
@@ -18,7 +18,7 @@
 
   $\{g^0, g^1, g^, …, g^{n-1}\}$​
 
-**（3）有限域/伽罗华域（Galois Field）上的有限循环群**
+## （3）有限域/伽罗华域（Galois Field）上的有限循环群
 
 伽罗华域是仅含有限多个元素的域，其上的四则运算实际上是多项式计算
 
@@ -81,17 +81,29 @@
 
     - 设公钥、私钥分别为 $pk$ 和 $sk$，$G$ 为基点，$pk = sk · G$，根据给定的 $sk$ 和 $G$，计算 $pk$ 很容易，但给定 $pk$ 和 $Q$，求 $sk$ 非常困难 $→ \ O(1) \ vs \ O(求解离散对数)$
 
-**（4）Bilinear Map 双线性映射**
+## （4）Bilinear Map 双线性映射
 
-设 $\mathbb{G}_1、\mathbb{G}_2、\mathbb{G}_T$ 为三个素数 $p$ 阶乘法循环群，$g$ 为它的生成元，它们之间的映射关系 $e: \mathbb{G} \times \mathbb{G} \rightarrow \mathbb{G}_T$，由两个向量空间上的元素，生成第三个向量空间上一个元素，并且该函数对每个参数都是线性的
+设 $\mathbb{G}_1、\mathbb{G}_2、\mathbb{G}_T$ 为三个素数 $p$ 阶乘法循环群，$g$ 为它的生成元，它们之间的映射关系 $e: \mathbb{G}_1 \times \mathbb{G}_2 \rightarrow \mathbb{G}_T$，由两个向量空间上的元素，生成第三个向量空间上一个元素，并且该函数对每个参数都是线性的
 
 $e$ 有以下性质：
 
 - 双线性：对于任意 $g_1 \in \mathbb{G}_1, g_2 \in \mathbb{G}_2, \ a, b \in \mathbb{Z}_p$，均有 $e(g_1^a, g_2^b) = e(g_1, g_2)^{ab}$ 成立     
-- 非退化性：$\exist g_1 \in \mathbb{G}_1, g_2 \in \mathbb{G}_2, e(g_1, g_2) \neq 1_{\mathbb{G}_T}$
+- 非退化性：$\exist g_1 \in \mathbb{G}_1, g_2 \in \mathbb{G}_2, \ e(g_1, g_2) \neq 1_{\mathbb{G}_T}$
 - 可计算性：存在有效算法，对于 $\forall g_1 \in \mathbb{G}_1, g_2 \in \mathbb{G}_2$，均可计算 $e(g_1, g_2)$
 
-> 注：在某些定义中，$\mathbb{G}_1$ 和 $\mathbb{G_2}$ 可以为加法循环群
+> ⚠️注：在某些定义中如基于椭圆曲线的双线性群构造中，$\mathbb{G}_1$ 和 $\mathbb{G}_2$​ 可以为加法循环群
+
+### symmetric bilinear group 对称双线性群
+
+$\mathbb{G}_1 = \mathbb{G}_2$
+
+### asymmetric bilinear group 非对称双线性群
+
+$\mathbb{G}_1 \neq \mathbb{G}_2$
+
+> ⚠️注：是否为对称双线性群由选取的椭圆曲线种类决定。一般认为，非对称双线性群要比对称双线性群更安全。特别地，现在已经证明一些特定的对称双线性群是不安全的了。
+
+
 
 $e(g^a, g^b) = e(g^{ab}, g) = e(g, g^{ab}) = e(g, g)^{ab}$
 
@@ -103,3 +115,4 @@ $e(g, g)^s * e(g, g)^t = e(g, g)^{s+t} = e(g^{s+t}, g) = e(g, g^{s+t})$
 - https://www.cnblogs.com/IrisHyaline/p/17578345.html
 - https://blog.csdn.net/qq_37921144/article/details/124225697
 - https://www.zhihu.com/question/39641890
+- https://blog.csdn.net/jingzi123456789/article/details/104945648/
