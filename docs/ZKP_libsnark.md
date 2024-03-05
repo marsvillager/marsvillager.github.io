@@ -1,4 +1,4 @@
-# Structure
+## Structure
 
 目录结构
 
@@ -9,25 +9,25 @@
 - **zk_proof_systems**：零知识证明中的不同证明系统，i.e. Groth16, GM17, etc.
 - **gadgetlib1/gadgetlib2**：用于构建新电路的小工具
 
-# Relation
+## Relation
 
-## 约束可满足问题
+### 约束可满足问题
 
 - **R1CS** — Rank-1 Constraint System
   - $(A \mathcal{z}) \odot (B \mathcal{z}) - (C \mathcal{z}) = 0$
 - **USCS** — Unitary-Square Constraint System
 
-## 电路可满足
+### 电路可满足
 
 - **BACS** — Bilinear Arithmetic Circuit Satisfiability
 - **TBCS** — Two-input Boolean Circuit Satisfiability
 
-## RAM（Random Access Machine）
+### RAM（Random Access Machine）
 
 - **tinyRAM**
 - **fooRAM**
 
-## 算数程序
+### 算数程序
 
 - **QAP** — Quadratic Arithmetic Program（GGPR13）
   - 多项式的内积运算
@@ -35,7 +35,7 @@
 - **SQP** — Square Arithmetic Program（GM17）
 - **SSP** — Square Span Program (DFGK14)
 
-# ZK Proof System
+## ZK Proof System
 
 libsnark 提供了四种证明系统：
 
@@ -75,6 +75,6 @@ libsnark 提供了四种证明系统：
 
   - ram_zksnark
 
-# Reference
+## Reference
 
 - https://trapdoortech.medium.com/zero-knowledge-proof-deep-into-libsnark-a3f02949f064

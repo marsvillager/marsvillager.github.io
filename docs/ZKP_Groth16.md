@@ -1,12 +1,12 @@
-# 1、前置知识
+## 1、前置知识
 
 ![algebra](https://img-blog.csdnimg.cn/20210429150145188.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2N3Mzk3MjY1MzYy,size_16,color_FFFFFF,t_70)
 
-## （1）Group 群
+### （1）Group 群
 
 代数结构 $(R, *)$​​，二元运算根据封闭性、单位元、逆元、结合律、交换律，可以归纳成不同的群
 
-## （2）循环群
+### （2）循环群
 
 设 $G$ 是一个阶为 $p$（素数）的循环群，循环群中所有的元素都由一个元素生成，称这个元素 $g$（正整数）为 $G$ 的生成元
 
@@ -18,7 +18,7 @@
 
   $\{g^0, g^1, g^, …, g^{n-1}\}$​
 
-## （3）有限域/伽罗华域（Galois Field）上的有限循环群
+### （3）有限域/伽罗华域（Galois Field）上的有限循环群
 
 伽罗华域是仅含有限多个元素的域，其上的四则运算实际上是多项式计算
 
@@ -81,7 +81,7 @@
 
     - 设公钥、私钥分别为 $pk$ 和 $sk$，$G$ 为基点，$pk = sk · G$，根据给定的 $sk$ 和 $G$，计算 $pk$ 很容易，但给定 $pk$ 和 $Q$，求 $sk$ 非常困难 $→ \ O(1) \ vs \ O(求解离散对数)$
 
-## （4）Bilinear Map 双线性映射
+### （4）Bilinear Map 双线性映射
 
 设 $\mathbb{G}_1、\mathbb{G}_2、\mathbb{G}_T$ 为三个素数 $p$ 阶乘法循环群，$g$ 为它的生成元，它们之间的映射关系 $e: \mathbb{G}_1 \times \mathbb{G}_2 \rightarrow \mathbb{G}_T$，由两个向量空间上的元素，生成第三个向量空间上一个元素，并且该函数对每个参数都是线性的
 
@@ -93,11 +93,11 @@ $e$ 有以下性质：
 
 > ⚠️注：在某些定义中如基于椭圆曲线的双线性群构造中，$\mathbb{G}_1$ 和 $\mathbb{G}_2$​ 可以为加法循环群
 
-### symmetric bilinear group 对称双线性群
+#### symmetric bilinear group 对称双线性群
 
 $\mathbb{G}_1 = \mathbb{G}_2$
 
-### asymmetric bilinear group 非对称双线性群
+#### asymmetric bilinear group 非对称双线性群
 
 $\mathbb{G}_1 \neq \mathbb{G}_2$
 
@@ -109,7 +109,7 @@ $e(g^a, g^b) = e(g^{ab}, g) = e(g, g^{ab}) = e(g, g)^{ab}$
 
 $e(g, g)^s * e(g, g)^t = e(g, g)^{s+t} = e(g^{s+t}, g) = e(g, g^{s+t})$
 
-# Reference
+## Reference
 
 - https://abcdxyzk.github.io/blog/2018/04/16/isal-erase-3/
 - https://www.cnblogs.com/IrisHyaline/p/17578345.html

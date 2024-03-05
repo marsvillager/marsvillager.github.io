@@ -2,7 +2,7 @@
 2022-HitCon-Web-yeeclass
 :::
 
-# 1、思路
+## 1、思路
 
 本地部署：`sudo docker-compose build`，`sudo docker-compose up`
 
@@ -109,7 +109,7 @@ if (isset($_GET["hash"]) && $_GET["hash"] != "") {
 }
 ```
 
-# 2、获取哈希值
+## 2、获取哈希值
 
 哈希值为
 
@@ -118,7 +118,7 @@ $id = uniqid($username."_");
 hash("sha1", $id)
 ```
 
-## uniqid
+### uniqid
 
 https://www.php.net/manual/zh/function.uniqid.php
 
@@ -134,15 +134,15 @@ uniqid 的生成方式是 `{sec:08x}{usec:05x}`，13 位 16 进制数
 ?>
 ```
 
-## 入库时间
+### 入库时间
 
 通过 homework 查询 http://challenge-2f05aa9314a37773.sandbox.ctfhub.com:10800/submission.php?homeworkid=1 得到 2024-02-27 10:51:12.808250
 
-## 爆破时间差
+### 爆破时间差
 
 入库时间和 `uniqid` 由于运行效率，会存在微秒时间差，因而需要爆破该时间差
 
-# 3、exp
+## 3、exp
 
 ```python
 import hashlib
