@@ -18,11 +18,11 @@ hero:
       link: https://github.com/marsvillager/mindmap
 
 features:
-  - title: Security
-    details: Build a security knowledge base that breaks the three-layer defense, with the first layer being the attack chain/matrix, the second layer being vulnerabilities, and the third layer being a summarized log graph.
-  - title: NLP
-    details: Using the Large Language Model (LLM) as an Intermediate Representation (IR) to achieve abstract transformation of arbitrary input types, compatibility and inclusiveness, in order to achieve input independence.
-  - title: Graph
-    details: Compared to traditional feature engineering, the features learned by Prompt Learning are very coarse-grained and lack detailed interpretation and parsing of the original text. However, they have stronger generalization ability and robustness, and often achieve better results than traditional models in processing language data. Therefore, I believe that graphs with complex features and huge amounts of information, like languages, will also make breakthrough progress in attack detection in this field.
+  - title: Zero-Knowledge Proof
+    details: "Developing an encrypted traffic management policy based on zero-knowledge proofs: The client sends a zero-knowledge proof to the middle box, proving that the traffic of the encrypted channel complies with the policy. The middle box verifies the proof sent by the client and decides whether to forward the encrypted traffic to the server based on the verification result."
+  - title: CVE
+    details: 1. Utilizing embedding techniques to compute vectors for each tactic/technique in the Mitre ATT&CK matrix. For each CVE entry, peforming vectorization and calculating cosine similarity with the vectors of each tactic/technique to identify the top similar tactics.<br> 2. Leveraging the analytical capabilities of Large Language Model (LLM) to conduct semantic and contextual analysis of host information and CVE configurations. This facilitates the identification of potential vulnerabilities and security risks through comprehensive analysis and correlation. 
+  - title: Visualization
+    details: Visualize data using tools such as Observable Plot, d3.js, and neo4j.
 ---
 
