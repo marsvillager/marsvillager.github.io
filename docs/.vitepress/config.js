@@ -126,15 +126,19 @@ export default defineConfig({
   },
 
   markdown: {
-    config: (md) => {
-      md.use(markdownItKatex)
-    }
-  },
-  vue: {
-    template: {
-      compilerOptions: {
-        isCustomElement: (tag) => customElements.includes(tag)
-      }
-    }
+    math: true
   }
+  
+  // markdown: {
+  //   config: (md) => {
+  //     md.use(markdownItKatex)
+  //   }
+  // },
+  // vue: {
+  //   template: {
+  //     compilerOptions: {
+  //       isCustomElement: (tag) => customElements.includes(tag)
+  //     }
+  //   }
+  // }
 })
