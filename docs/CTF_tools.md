@@ -1,3 +1,7 @@
+::: info
+Capture The Flag
+:::
+
 ## 1. 网页目录
 
 - `dirb`
