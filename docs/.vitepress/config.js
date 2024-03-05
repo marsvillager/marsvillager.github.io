@@ -8,7 +8,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Blogs', link: '/CTF_yeeclass' }
+      { text: 'Blogs', link: '/CTF_Web_PNG图片转换器' }
     ],
 
     sidebar: [
@@ -17,10 +17,13 @@ export default defineConfig({
         items: [
           // { text: 'Markdown Examples', link: '/markdown-examples' },
           // { text: 'Runtime API Examples', link: '/api-examples' },
+          { text: 'CTF_Web_rce', link: '/CTF_Web_PNG图片转换器' },
           { text: 'CTF_Web_rce', link: '/CTF_Web_rce' },
           { text: 'CTF_Web_yeeclass', link: '/CTF_Web_yeeclass' },
           { text: 'Floating Point', link: '/Floating Point' },
-          { text: 'TLS', link: '/TLS' }
+          { text: 'TLS', link: '/TLS' },
+          { text: 'ZKP_Groth16', link: '/ZKP_Groth16' },
+          { text: 'ZKP_libsnark', link: '/ZKP_libsnark' }
         ]
       }
     ],
