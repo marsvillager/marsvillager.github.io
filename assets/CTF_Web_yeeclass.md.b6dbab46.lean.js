@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as n,O as l}from"./chunks/framework.aacc0fa0.js";const i=JSON.parse('{"title":"1、思路","description":"","frontmatter":{},"headers":[],"relativePath":"CTF_Web_yeeclass.md"}'),p={name:"CTF_Web_yeeclass.md"},o=l("",29),e=[o];function t(c,D,r,F,y,C){return a(),n("div",null,e)}const u=s(p,[["render",t]]);export{i as __pageData,u as default};
