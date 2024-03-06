@@ -1,6 +1,5 @@
 import { defineConfig } from 'vitepress'
-// import markdownItKatex from 'markdown-it-katex'
-import mathjax3 from 'markdown-it-mathjax3';
+import markdownItKatex from 'markdown-it-katex'
 
 const customElements = [
   'math',
@@ -128,8 +127,7 @@ export default defineConfig({
 
   markdown: {
     config: (md) => {
-      // md.use(markdownItKatex)
-      md.use(mathjax3);
+      md.use(markdownItKatex)
     }
   },
   vue: {
