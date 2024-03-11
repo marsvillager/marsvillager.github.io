@@ -135,6 +135,8 @@ https://www.cnblogs.com/bflw/p/12938013.html
 
 ## 6. 注入（sqlmap）
 
+**SQL 注入，简单理解，也就是将用户输的的内容当代码执行了**，应用程序没有对用户输入的内容进行判断和过滤，攻击者通过将构造的恶意 SQL 语句作为查询参数，使其在后台服务器上解析执行，最终导致数据库信息被篡改或泄露，这个过程就成为 SQL 注入。
+
 > https://blog.csdn.net/m0_60651303/article/details/131704947
 >
 > https://www.ctfhub.com/#/skilltree  /web/SQL注入
@@ -546,5 +548,87 @@ for the remaining tests, do you want to include all tests for 'MySQL' extending 
 (venv) ➜  sqlmap git:(master) python sqlmap.py -u "http://challenge-96c2d3e8613433d1.sandbox.ctfhub.com:10800/?id=1" --dbs --tamper=space2comment --time-sec=2
 ```
 
+### 盲注
 
+盲注是 SQL 注入的一种，SQL 语句执行后，选择的数据不能回显到前端页面，因此攻击者无法获得任何错误回显消息，此时需要利用一些方法进行判断或者尝试，逐渐推断出数据库中的敏感信息，这个过程称之为盲注。
 
+在盲注中，攻击者根据其返回页面的不同来判断信息。
+
+#### 基于布尔的盲注
+
+页面返回的结果只有两种：正确和错误。
+
+通过构造 SQL 判断语句，查看页面的返回结果来判断哪些 SQL 判断条件成立。
+
+#### 基于时间的盲注
+
+无论输入什么值，只会回显一个界面。
+
+时间盲注又称延时注入，即通过具有延时功能的 sleep、benchmark 等时间函数，查看页面返回的时间差来判断注入的语句是否正确。
+
+> ⚠️注：一般情况下，可以进行布尔盲注的地方也可以进行时间盲注，但可以进行时间盲注的地方不一定可以进行布尔盲注，而且时间盲注适用的范围更广，布尔盲注的稳定性更好，但因为时间盲注的实现原理是基于 timeout 的，稳定性与效率不如布尔注入。在盲注测试时，通常先测试是否可以布尔盲注，若不行再尝试时间盲注。
+>
+
+#### 盲注常用函数
+
+- `length(str)` 函数
+
+  返回字符串的长度，以字节为单位
+
+- `substr(str, pos)、substr(str, pos, len)、substring(str, pos)、substring(str, pos, len)` 截取
+
+  从指定位置开始，截取字符串指定长度的子串（空白也算字符）
+
+- `left(str, num)、mid(str, pos, num)、right(str, pos, num)`
+
+  从左侧截取 str 的前 num 位
+
+  从 pos 开始截取 str 的 num 位
+
+- `ascii(str)、ord(str)`
+
+  返回字符的 ascii 码
+
+- `sleep(N)`
+
+  让语句延迟执行 N 秒，执行成功后返回 0
+
+- `if(expr1, expr2, expr3)`
+
+  判断语句，如果第一个语句正确，就执行第二个语句，如果错误，就执行第三个语句
+
+- `reverse()`
+
+  reverse(str) 反转字符串，将最后一个字符显示在第一个位置，第一个字符显示在最后一个位置，重新排列字符的顺序并返回结果字符串
+
+- `update()`
+
+  更新表中已存在的记录
+
+- `extractvalue(xml_frag, xpath_expr)`
+
+  使用 XPath 表示法从 XML 字符串中提取值，传入目标 xml 文档，用 XPath 路径法表示的查找路径
+
+- `floor()`
+
+  向下取整，接受一个数字作为输入，并返回不大于该数字的最大整数
+
+- `like()`
+
+  在一个字符型字段列中检索包含对应子串
+
+  % 和 * 包含零个或多个字符的任意字符串，e.g. like’Mc%’ 将搜索以字母 Mc 开头的所有字符串
+
+  \_（下划线）和 ? 表示任何单个字符，e.g. like’_heryl’ 将搜索以字母 heryl 结尾的所有六个字母的名称
+
+  [ ] 指定范围 ([a-f]) 或集合 ([abcdef]) 中的任何单个字符，e.g. like’[CK]ars[eo]n’ 将搜索下列字符串：Carsen、Karsen、Carson 和 Karson（如 Carson）
+
+  [^] 不属于指定范围 ([a-f]) 或集合 ([abcdef]) 的任何单个字符，e.g. like’M[\^c]%’ 将搜索以字母 M 开头，并且第二个字母不是 c 的所有名称
+
+  \# 等同于 DOS 命令中的通配符，但只能代表单个数字
+
+- `/**/` 为空格的替代符号，用于绕过某些 WAF（Web Application Firewall）
+
+### Reference
+
+- https://ctf-wiki.org/web/sqli/
