@@ -109,6 +109,7 @@ export default defineConfig({
           { text: '后量子密码', link: '/后量子密码' },
           { text: 'CTF_tools', link: '/CTF_tools' },
           { text: 'CTF_Web_mysql_injection', link: '/CTF_Web_mysql_injection' },
+          { text: 'CTF_Web_pklovecloud', link: '/CTF_Web_pklovecloud' },
           { text: 'CTF_Web_PNG图片转换器', link: '/CTF_Web_PNG图片转换器' },
           { text: 'CTF_Web_rce', link: '/CTF_Web_rce' },
           { text: 'CTF_Web_yeeclass', link: '/CTF_Web_yeeclass' },
