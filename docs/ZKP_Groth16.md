@@ -22,11 +22,11 @@ Zero-Knowledge Proof
 
 - 无限循环群
 
-  $\{…, g^{-2}, g^{-1}, g^0, g^1, g^2, …\}$
+  $\{$…$, g^{-2}, g^{-1}, g^0, g^1, g^2, $…$\}$
 
 - 有限循环群
 
-  $\{g^0, g^1, g^, …, g^{n-1}\}$​
+  $\{g^0, g^1, g^2, $…$, g^{n-1}\}$​
 
 ### （3）有限域/伽罗华域（Galois Field）上的有限循环群
 
@@ -37,13 +37,13 @@ Zero-Knowledge Proof
   - 加法 $(a + b) \ mod \ p$
 
   - 乘法 $(a \times b) \ mod \ p$​​
-  - $GF(p)$ 中的元素为 $\{0, 1, …, p-1\}$
+  - $GF(p)$ 中的元素为 $\{0, 1, $…$, p-1\}$
   - 有限域 $GF(p)$ 中 $p$ 必须是一个素数才能保证集合中的所有元素都有加法和乘法逆元（$0$ 除外），但实际应用中很多场合需要 $0$ 到 $255$ 这 $256$​ 个数字组成一个域，但 $256$ 不是素数，小于 $256$ 的最大素数为 $251$
 
 - 因此引入 $GF(p^n)$，$p$ 为素数，通常取 $2$
 
-  - $GF(2^n)$ 使用多项式运算，多项式表示 $f(x) = a_{n-1}x^{n-1} + … + a_1x + a_0 = \sum_{i=1}^n{a_i}{x^i}$，系数进行模 $2$ 处理，每项为 $0$ 或 $1$（$GF(3^n)$ 系数可以取 $0、1、2$）
-  - 可以转换为二进制数 $a_{n-1}……a_2a_1a_0$，e.g. $f(x) = x^4 + x^3 + 1 → 11001_2$
+  - $GF(2^n)$ 使用多项式运算，多项式表示 $f(x) = a_{n-1}x^{n-1} + $…$ + a_1x + a_0 = \sum_{i=1}^n{a_i}{x^i}$，系数进行模 $2$ 处理，每项为 $0$ 或 $1$（$GF(3^n)$ 系数可以取 $0、1、2$）
+  - 可以转换为二进制数 $a_{n-1}$……$a_2a_1a_0$，e.g. $f(x) = x^4 + x^3 + 1 → 11001_2$
   - $f(x) = x^3 + x^2 + 1, \ g(x) = x^2 + x + 1$
   - 加法 $f(x) + g(x) = x^3 + (2 \ mod \ 2)x^2 + x + 2 \ mod \ 2 = x^3 + x$
   - 乘法 $f(x) \times g(x) = x^5 + x + 1$​
@@ -52,7 +52,7 @@ Zero-Knowledge Proof
 
   - > ⚠️  椭圆曲线是一种形式上的称呼，实际与椭圆没有任何关系
 
-  - > ⚠️ 与传统的有限域上的离散对数不同，使用点加法而非乘法，或者说其对乘法的定义为 $a·P = \underbrace{P + P + … + P}_{a \ times}$
+  - > ⚠️ 与传统的有限域上的离散对数不同，使用点加法而非乘法，或者说其对乘法的定义为 $a·P = \underbrace{P + P + \cdots + P}_{a \ times}$
 
   - 实数域 $R$ 上的椭圆曲线 $E = \{(x,y) \in \mathbb{R}^2 | y^2 = x^3 + ax + b, 4a^3 + 27b^2 \neq 0 \} \bigcup \{O\}$（$O$ 表示无穷远点，相当于 0）
 
@@ -64,41 +64,18 @@ Zero-Knowledge Proof
 
   - 设 $P(x_1, y_1), Q(x_2, y_2)$ 为椭圆曲线上 $x$ 坐标不同的两个点，画一条通过 $P, Q$ 的直线与椭圆曲线交于 $R_1$，根据上述定义，$P + Q + R_1 = O$，设 $R(x_3, y_3)$ 是 $R_1$ 关于 $x$ 轴对称的点即 $R = -R_1$，则 $P + Q = -R_1 = R$
 
-    - $$
-      y = kx + c \\
-      (kx + c)^2 = x^3 + ax + b → x^3 - k^2x^2 + (a - 2kc)x + b - c^2 = 0 \\
-      x_1 + x_2 + x_3 = -b = -(-k^2) = k^2 \\ \\
-      
-      \begin{aligned}
-      x_3 &= k^2 - x_1 - x_2 (mod \ p)\\
-      y_3 &= k(x_1 - x_3) - y_1 (mod \ p)
-      \end{aligned} \\
-      
-      \begin{aligned}
-      &where \\
-      &k = \left\{
-      \begin{aligned}
-      &\frac{y_2 - y_1}{x_2 - x_1} (mod \ p), if \ P \neq Q \\
-      &\frac{3x_1^2 + a}{2y_1} (mod \ p), if \ P = Q \ (与曲线相切), y^2 = x^3 + ax + b \ 两边求导 → 2yy' = 3x^2 + a
-      \end{aligned}
-      \right.
-      \end{aligned}
-      
-      \nonumber
-      $$
-
-      <img src="https://ts1.cn.mm.bing.net/th/id/R-C.b0ea6c3d0c9d72b9f86f12fa131dc3e2?rik=QtRhxNHlAR9%2ftg&riu=http%3a%2f%2fblog.hubwiz.com%2f2020%2f06%2f16%2felliptic-curve-intro%2felliptic-curve-real.jpeg&ehk=o4WkZiEZMoYeXX0AjxRv%2bYu60r0KAcgYkJKmGtRssvs%3d&risl=&pid=ImgRaw&r=0" alt="椭圆曲线密码学" style="zoom: 33%;" />
-
-    - 设公钥、私钥分别为 $pk$ 和 $sk$，$G$ 为基点，$pk = sk · G$，根据给定的 $sk$ 和 $G$，计算 $pk$ 很容易，但给定 $pk$ 和 $Q$，求 $sk$ 非常困难 $→ \ O(1) \ vs \ O(求解离散对数)$
+    <img src="https://ts1.cn.mm.bing.net/th/id/R-C.b0ea6c3d0c9d72b9f86f12fa131dc3e2?rik=QtRhxNHlAR9%2ftg&riu=http%3a%2f%2fblog.hubwiz.com%2f2020%2f06%2f16%2felliptic-curve-intro%2felliptic-curve-real.jpeg&ehk=o4WkZiEZMoYeXX0AjxRv%2bYu60r0KAcgYkJKmGtRssvs%3d&risl=&pid=ImgRaw&r=0" alt="椭圆曲线密码学" style="zoom: 33%;" />
 
 ### （4）Bilinear Map 双线性映射
 
-设 $\mathbb{G}_1、\mathbb{G}_2、\mathbb{G}_T$ 为三个素数 $p$ 阶乘法循环群，$g$ 为它的生成元，它们之间的映射关系 $e: \mathbb{G}_1 \times \mathbb{G}_2 \rightarrow \mathbb{G}_T$，由两个向量空间上的元素，生成第三个向量空间上一个元素，并且该函数对每个参数都是线性的
+线性包括加法和乘法
+
+设 $\mathbb{G}_1$、$\mathbb{G}_2$、$\mathbb{G}_T$ 为三个素数 **$p$ 阶乘法循环群**，$g$ 为它的生成元，它们之间的映射关系 $e: \mathbb{G}_1 \times \mathbb{G}_2 \rightarrow \mathbb{G}_T$，由两个向量空间上的元素，生成第三个向量空间上一个元素，并且该函数对每个参数都是线性的，即**双线性的函数有两个输入，且对这两个输入分别满足线性**，例如矩阵乘法、数据库两张表的笛卡尔积
 
 $e$ 有以下性质：
 
 - 双线性：对于任意 $g_1 \in \mathbb{G}_1, g_2 \in \mathbb{G}_2, \ a, b \in \mathbb{Z}_p$，均有 $e(g_1^a, g_2^b) = e(g_1, g_2)^{ab}$ 成立     
-- 非退化性：$\exist g_1 \in \mathbb{G}_1, g_2 \in \mathbb{G}_2, \ e(g_1, g_2) \neq 1_{\mathbb{G}_T}$
+- 非退化性：$\exist$ $g_1 \in \mathbb{G}_1, g_2 \in \mathbb{G}_2, \ e(g_1, g_2) \neq 1_{\mathbb{G}_T}$
 - 可计算性：存在有效算法，对于 $\forall g_1 \in \mathbb{G}_1, g_2 \in \mathbb{G}_2$，均可计算 $e(g_1, g_2)$
 
 > ⚠️注：在某些定义中如基于椭圆曲线的双线性群构造中，$\mathbb{G}_1$ 和 $\mathbb{G}_2$​ 可以为加法循环群
