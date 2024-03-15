@@ -97,7 +97,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Blogs', link: '/CTF_tools' }
+      { text: 'Blogs', link: '/后量子密码' }
     ],
 
     sidebar: [
@@ -107,6 +107,10 @@ export default defineConfig({
           // { text: 'Markdown Examples', link: '/markdown-examples' },
           // { text: 'Runtime API Examples', link: '/api-examples' },
           { text: '后量子密码', link: '/后量子密码' },
+          { text: 'ZKP_Groth16', link: '/ZKP_Groth16' },
+          { text: 'ZKP_libsnark', link: '/ZKP_libsnark' },
+          { text: 'library', link: '/library' },
+          { text: 'TLS', link: '/TLS' },
           { text: 'CTF_tools', link: '/CTF_tools' },
           { text: 'CTF_Web_EasyCleanup', link: '/CTF_Web_EasyCleanup' },
           { text: 'CTF_Web_mysql_injection', link: '/CTF_Web_mysql_injection' },
@@ -114,10 +118,7 @@ export default defineConfig({
           { text: 'CTF_Web_PNG图片转换器', link: '/CTF_Web_PNG图片转换器' },
           { text: 'CTF_Web_rce', link: '/CTF_Web_rce' },
           { text: 'CTF_Web_yeeclass', link: '/CTF_Web_yeeclass' },
-          { text: 'Floating Point', link: '/Floating Point' },
-          { text: 'TLS', link: '/TLS' },
-          { text: 'ZKP_Groth16', link: '/ZKP_Groth16' },
-          { text: 'ZKP_libsnark', link: '/ZKP_libsnark' }
+          { text: 'Floating Point', link: '/Floating Point' }
         ]
       }
     ],

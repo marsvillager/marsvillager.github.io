@@ -68,33 +68,63 @@ Zero-Knowledge Proof
 
 ### （4）Bilinear Map 双线性映射
 
-线性包括加法和乘法
+**线性**满足：
 
-设 $\mathbb{G}_1$、$\mathbb{G}_2$、$\mathbb{G}_T$ 为三个素数 **$p$ 阶乘法循环群**，$g$ 为它的生成元，它们之间的映射关系 $e: \mathbb{G}_1 \times \mathbb{G}_2 \rightarrow \mathbb{G}_T$，由两个向量空间上的元素，生成第三个向量空间上一个元素，并且该函数对每个参数都是线性的，即**双线性的函数有两个输入，且对这两个输入分别满足线性**，例如矩阵乘法、数据库两张表的笛卡尔积
+- **可加性** $L(x+t)=L(x)+L(t)$
+- **一次齐次性** $L(mx)=mL(x)$
+
+在数学中，一个**双线性映射**由两个向量空间上的元素，生成第三个向量空间上一个元素，并且该函数对每个参数都是线性的，即双线性的函数有两个输入，且对这两个输入分别满足线性，例如矩阵乘法、数据库两张表的笛卡尔积
+
+- 矩阵乘法是双线性映射 $M(m,n) \times M(n,p) \rightarrow M(m,p)$，$c_{ij} = \sum_{k=0}^{k=n-1} a_{ik}b_{kj}$
+
+设 $X, Y, Z$ 是在同一个基础域 $F$ 上的三个向量空间，双线性映射是函数 $B: X \times Y \rightarrow Z$，使得对于任何 $x \in X$，$x \mapsto B(x, y)$ 是从 $X$ 到 $Z$ 的线性映射，并且对于任何 $y \in Y$，$y \mapsto B(x,y)$ 是从 $Y$ 到 $Z$​ 的线性映射 
+
+- **symmetric bilinear map 对称双线性映射**：如果 $X = Y$ 且对于任何 $x \in X, y \in Y, B(x,y)=B(y,x)$，则称 $B$​ 是对称的
+- **asymmetric bilinear map 非对称双线性映射**：$X \neq Y$
+
+设 $\mathbb{G}_1$、$\mathbb{G}_2$、$\mathbb{G}_T$ 为三个素数 **$p$ 阶乘法循环群**，$g$ 为它的生成元，它们之间的映射关系 $e: \mathbb{G}_1 \times \mathbb{G}_2 \rightarrow \mathbb{G}_T$​
 
 $e$ 有以下性质：
 
-- 双线性：对于任意 $g_1 \in \mathbb{G}_1, g_2 \in \mathbb{G}_2, \ a, b \in \mathbb{Z}_p$，均有 $e(g_1^a, g_2^b) = e(g_1, g_2)^{ab}$ 成立     
-- 非退化性：存在 $g_1 \in \mathbb{G}_1, g_2 \in \mathbb{G}_2, \ e(g_1, g_2) \neq 1_{\mathbb{G}_T}$
-- 可计算性：存在有效算法，对于 $\forall g_1 \in \mathbb{G}_1, g_2 \in \mathbb{G}_2$，均可计算 $e(g_1, g_2)$
+- 双线性（bilinearity）：对于任意 $g_1 \in \mathbb{G}_1, g_2 \in \mathbb{G}_2, \ a, b \in \mathbb{Z}_p$，均有 $e(g_1^a, g_2^b) = e(g_1, g_2)^{ab}$ 成立     
+- 非退化性（non-degeneracy）：存在 $g_1 \in \mathbb{G}_1, g_2 \in \mathbb{G}_2, \ e(g_1, g_2) \neq 1_{\mathbb{G}_T}$，非退化性保证了只要我们选择非单元成员就能得到目标群中的非单位元
+- 可计算性（computability）：存在有效算法，对于 $\forall g_1 \in \mathbb{G}_1, g_2 \in \mathbb{G}_2$，均可计算 $e(g_1, g_2)$
 
 > ⚠️注：在某些定义中如基于椭圆曲线的双线性群构造中，$\mathbb{G}_1$ 和 $\mathbb{G}_2$​ 可以为加法循环群
 
-#### symmetric bilinear group 对称双线性群
+- 对称双线性群：$\mathbb{G}_1 = \mathbb{G}_2$
+- 非对称双线性群：$\mathbb{G}_1 \neq \mathbb{G}_2$
 
-$\mathbb{G}_1 = \mathbb{G}_2$
-
-#### asymmetric bilinear group 非对称双线性群
-
-$\mathbb{G}_1 \neq \mathbb{G}_2$
 
 > ⚠️注：是否为对称双线性群由选取的椭圆曲线种类决定。一般认为，非对称双线性群要比对称双线性群更安全。特别地，现在已经证明一些特定的对称双线性群是不安全的了。
 
+#### 实践
 
+Pairing-based cryptography: https://crypto.stanford.edu/pbc/
 
-$e(g^a, g^b) = e(g^{ab}, g) = e(g, g^{ab}) = e(g, g)^{ab}$
+（1）安装 [GMP library](http://gmplib.org/)
 
-$e(g, g)^s * e(g, g)^t = e(g, g)^{s+t} = e(g^{s+t}, g) = e(g, g^{s+t})$
+```shell
+./configure
+make
+make install
+```
+
+Library 位于 `/usr/local/lib/`
+
+（2）安装 <a href='https://crypto.stanford.edu/pbc/download.html'>PBC library</a>
+
+```shell
+./configure
+make
+make install
+```
+
+Library 位于 `/usr/local/lib/`
+
+（3）<a href='https://crypto.stanford.edu/pbc/manual/pr01.html'>使用</a>
+
+Run `pbc/pbc` and type
 
 ## Reference
 
@@ -102,4 +132,5 @@ $e(g, g)^s * e(g, g)^t = e(g, g)^{s+t} = e(g^{s+t}, g) = e(g, g^{s+t})$
 - https://www.cnblogs.com/IrisHyaline/p/17578345.html
 - https://blog.csdn.net/qq_37921144/article/details/124225697
 - https://www.zhihu.com/question/39641890
+- https://zh.wikipedia.org/wiki/双线性映射
 - https://blog.csdn.net/jingzi123456789/article/details/104945648/

