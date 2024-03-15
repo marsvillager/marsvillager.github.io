@@ -109,6 +109,7 @@ export default defineConfig({
           { text: '后量子密码', link: '/后量子密码' },
           { text: 'ZKP_Groth16', link: '/ZKP_Groth16' },
           { text: 'ZKP_libsnark', link: '/ZKP_libsnark' },
+          { text: 'Floating Point', link: '/Floating Point' },
           { text: 'library', link: '/library' },
           { text: 'TLS', link: '/TLS' },
           { text: 'CTF_tools', link: '/CTF_tools' },
@@ -117,8 +118,7 @@ export default defineConfig({
           { text: 'CTF_Web_pklovecloud', link: '/CTF_Web_pklovecloud' },
           { text: 'CTF_Web_PNG图片转换器', link: '/CTF_Web_PNG图片转换器' },
           { text: 'CTF_Web_rce', link: '/CTF_Web_rce' },
-          { text: 'CTF_Web_yeeclass', link: '/CTF_Web_yeeclass' },
-          { text: 'Floating Point', link: '/Floating Point' }
+          { text: 'CTF_Web_yeeclass', link: '/CTF_Web_yeeclass' }
         ]
       }
     ],
