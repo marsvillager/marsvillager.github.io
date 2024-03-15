@@ -113,6 +113,7 @@ export default defineConfig({
           { text: 'library', link: '/library' },
           { text: 'TLS', link: '/TLS' },
           { text: 'CTF_tools', link: '/CTF_tools' },
+          { text: 'CTF_Misc_lemminx', link: '/CTF_Misc_lemminx' },
           { text: 'CTF_Web_EasyCleanup', link: '/CTF_Web_EasyCleanup' },
           { text: 'CTF_Web_mysql_injection', link: '/CTF_Web_mysql_injection' },
           { text: 'CTF_Web_pklovecloud', link: '/CTF_Web_pklovecloud' },
