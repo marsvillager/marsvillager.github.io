@@ -97,7 +97,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Blogs', link: '/后量子密码' }
+      { text: 'Blogs', link: '/mindmap' }
     ],
 
     sidebar: [
@@ -106,6 +106,7 @@ export default defineConfig({
         items: [
           // { text: 'Markdown Examples', link: '/markdown-examples' },
           // { text: 'Runtime API Examples', link: '/api-examples' },
+          { text: 'mindmap', link: '/mindmap' },
           { text: '后量子密码', link: '/后量子密码' },
           { text: 'ZKP_Groth16', link: '/ZKP_Groth16' },
           { text: 'ZKP_libsnark', link: '/ZKP_libsnark' },

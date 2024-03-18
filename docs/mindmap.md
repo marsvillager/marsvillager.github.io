@@ -1,0 +1,48 @@
+::: info
+导航
+:::
+
+- ***<a href='https://marsvillager.github.io/mindmap/out/加密恶意流量主动检测.html'>加密恶意流量主动检测</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/数值分析.html'>数值分析</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/AI 安全.html'>AI 安全</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/Bug.html'>Bug</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/DPI.html'>DPI</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/Formal Methods.html'>Formal Methods</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/Fuzz Testing.html'>Fuzz Testing</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/Taint Analysis.html'>Taint Analysis</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/IDS.html'>IDS</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Data Collection.html'>Data Collection</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Graph Summarization.html'>Graph Summarization</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Intrusion Detection.html'>Intrusion Detection</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Benchmark Datasets.html'>Benchmark Datasets</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/zeek.html'>zeek</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/Injection.html'>Injection</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/market.html'>merket</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/Mathematical Modeling.html'>Mathematical Modeling</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/OpenAI Model.html'>OpenAI Model</a>***
+- ***Object***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/Directory Object.html'>Directory Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/Domain Name Object.html'>Domain Name Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/Email Address Object.html'>Email Address Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/Email Message Object.html'>Email Message Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/File Object.html'>File Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/IPv4 Address Object.html'>IPv4 Address Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/IPv6 Address Object.html'>IPv6 Address Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/MAC Address Object.html'>MAC Address Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/Mutex Object.html'>Mutex Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/Network Traffic Object.html'>Network Traffic Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/Process Object.html'>Process Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/Relationship Object.html'>Relationship Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/Software Object.html'>Software Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/Relationship Object.html'>Relationship Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/Software Object.html'>Software Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/URL Object.html'>URL Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/User Account Object.html'>User Account Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/Windows™ Registry Key Object.html'>Windows™ Registry Key Object</a>***
+  - ***<a href='https://marsvillager.github.io/mindmap/out/Object/X.509 Certificate Object.html'>X.509 Certificate Object</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/Pattern Matching.html'>Pattern Matching</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/Privacy Computing.html'>Privacy Computing</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/Programs, Code and Binaries.html'>Programs, Code and Binaries</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/Provenance.html'>Provenance</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/Search Algorithm.html'>Search Algorithm</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/SecGPT.html'>SecGPT</a>***
