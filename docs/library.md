@@ -1,5 +1,5 @@
 ::: info
-杂谈
+笔记
 :::
 
 ## Introduction
