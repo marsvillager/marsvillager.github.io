@@ -1,1 +1,0 @@
-import{_ as t,o as e,c as i,O as a}from"./chunks/framework.aacc0fa0.js";const b=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"mindmap.md"}'),m={name:"mindmap.md"},r=a("",2),l=[r];function s(o,n,h,g,c,p){return e(),i("div",null,l)}const d=t(m,[["render",s]]);export{b as __pageData,d as default};
