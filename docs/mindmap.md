@@ -15,9 +15,11 @@
   - ***<a href='https://marsvillager.github.io/mindmap/out/Graph Summarization.html'>Graph Summarization</a>***
   - ***<a href='https://marsvillager.github.io/mindmap/out/Intrusion Detection.html'>Intrusion Detection</a>***
   - ***<a href='https://marsvillager.github.io/mindmap/out/Benchmark Datasets.html'>Benchmark Datasets</a>***
-- ***<a href='https://marsvillager.github.io/mindmap/out/zeek.html'>zeek</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/Zeek.html'>Zeek</a>***
 - ***<a href='https://marsvillager.github.io/mindmap/out/Injection.html'>Injection</a>***
-- ***<a href='https://marsvillager.github.io/mindmap/out/market.html'>merket</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/Metasploit.html'>Metasploit</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/RITA.html'>RITA</a>***
+- ***<a href='https://marsvillager.github.io/mindmap/out/Market.html'>Market</a>***
 - ***<a href='https://marsvillager.github.io/mindmap/out/Mathematical Modeling.html'>Mathematical Modeling</a>***
 - ***<a href='https://marsvillager.github.io/mindmap/out/OpenAI Model.html'>OpenAI Model</a>***
 - ***Object***

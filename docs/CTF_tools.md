@@ -629,6 +629,82 @@ for the remaining tests, do you want to include all tests for 'MySQL' extending 
 
 - `/**/` 为空格的替代符号，用于绕过某些 WAF（Web Application Firewall）
 
-### Reference
+## 7. 网络流量分析
+
+### Wireshark
+
+#### Expert Info
+
+##### Severity
+
+- Error 
+  - 严重错误，譬如：畸形数据包或识别出数据包协议头部的某些字段和预期值不符
+- Warning 
+  - 警告，一般性问题（应用程序问题或通信问题），譬如：TCP zero window、TCP window full、TCP 报文段失序、TCP 报文段丢失
+- Note 
+  - 提示，数据虽然合法但可能不是预期数据，可能引发故障的异常行为（正常行为），譬如：TCP 重传、重复确认、快速重传、http 错误码 404
+- Chat
+  - 正常会话，符合常规流量的特征
+
+##### Group
+
+- Assumption
+
+  - The protocol field has incomplete data and was dissected based on assumed value.
+
+- Checksum
+
+  - A checksum was invalid.
+
+- Comment
+
+  - Packet comment.
+
+- Debug
+
+  - Debugging information. You shouldn’t see this group in release versions of Wireshark.
+
+- Decryption
+
+  - A decryption issue.
+
+- Deprecated
+
+  - The protocol field has been deprecated.
+
+- Malformed
+
+  - Malformed packet or dissector has a bug. Dissection of this packet aborted.
+
+- **Protocol**
+
+  - Violation of a protocol’s specification (e.g., invalid field values or illegal lengths). Dissection of this packet probably continued.
+
+- Reassemble
+
+  - Problems while reassembling, e.g., not all fragments were available or an exception happened during reassembly.
+
+- Request Code
+
+  - An application request (e.g., File Handle == *x*). Usually assigned the Chat severity level.
+
+- Response Code
+
+  - An application response code indicates a potential problem, e.g., HTTP 404 page not found.
+
+- Security
+
+  - A security problem, e.g., an insecure implementation.
+
+- **Sequence**
+
+  - A protocol sequence number was suspicious, e.g., it wasn’t continuous or a retransmission was detected.
+
+- Undecoded
+
+  - Dissection incomplete or data can’t be decoded for other reasons.
+
+- ### Reference
 
 - https://ctf-wiki.org/web/sqli/
+- https://www.wireshark.org/docs/wsug_html_chunked/ChAdvExpert.html
